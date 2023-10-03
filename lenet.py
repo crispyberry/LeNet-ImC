@@ -17,12 +17,12 @@ def dot_product(a, b, prob):
                 result[i, j] += a[i, k] * b[k, j]
                     # Introduce randomness to occasionally add an extra self-multiplication
                 if np.random.rand() < prob:  # Adjust the threshold as needed
-                    #prob may restart, this is the worst case.
-                    if np.random.rand() < 0.001:#10% 95% wrong but fix
-                        result[i, j] +=  1 * result[i, j] - 0.5 * result[i, j]
-                    else:#90% right but fix, this means we fix without knowing whether inconsistency happens.
-                        result[i, j]  -= 0.5 * result[i, j]
-                    # result[i, j] +=  1 * result[i, j]
+                #     #prob may restart, this is the worst case.
+                #     if np.random.rand() < 0.001:#10% 95% wrong but fix
+                #         result[i, j] +=  1 * result[i, j] - 0.5 * result[i, j]
+                #     else:#90% right but fix, this means we fix without knowing whether inconsistency happens.
+                #         result[i, j]  -= 0.5 * result[i, j]
+                     result[i, j] +=  a[i, k] * b[k, j]
 
     return result
 
